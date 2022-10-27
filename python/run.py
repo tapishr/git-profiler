@@ -16,12 +16,12 @@ def main():
 		print(repo_path)
 		profiler = RepositoryProfiler(repo_path)
 		profiler.addUserEmails(user_emails)
-		repo_profile = profiler.getProfile()
-		for lang in repo_profile:
-			profile[lang] += repo_profile[lang]
+		profiler.getProfile()
+		# for lang in repo_profile:
+		# 	profile[lang] += repo_profile[lang]
 
-	for l in profile:
-		print(l, profile[l])
+	# for l in profile:
+	# 	print(l, profile[l])
 
 if __name__ == '__main__':
 	main()
