@@ -61,8 +61,9 @@ class RepositoryProfiler:
 			z=self.getDepth(contributions, langs),
 			x=dates,
 			y=langs,
-			colorscale='blackbody'))
+			colorscale='algae'))
 		fig.show()
+		self.getYoe(contributions, langs)
 
 	def getDepth(self, contributions, langs):
 		depth = []
@@ -73,3 +74,13 @@ class RepositoryProfiler:
 			langdepth = langdepth/np.sum(langdepth)
 			depth.append(langdepth)
 		return depth
+	
+	def getYoe(self, contributions, langs):
+		yoe = {}
+		print('------------------>> Years of Experience <<------------------------')
+		for lang in langs:
+			cdates = list(contributions[lang].keys())
+			# guess based on 365.2425 days per year for leap correction
+			yoe[lang] = datetime.timedelta(seconds=(int(max(cdates)) - int(min(cdates)))).days/ 365.2425
+			print("Number of years of experience in ", lang, " based on parsed data = ", yoe[lang])
+		# print(yoe)
