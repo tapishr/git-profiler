@@ -1,1 +1,0 @@
-# git-profiler-nodejs
